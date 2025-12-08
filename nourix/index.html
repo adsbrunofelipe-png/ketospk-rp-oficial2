@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nourix - Votre formule personnalisée</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        main {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 5rem 2rem;
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 900;
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 640px) {
+            h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 3.75rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            h1 {
+                font-size: 4.5rem;
+                margin-bottom: 6rem;
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 1024px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                margin-bottom: 5rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .grid {
+                gap: 5rem;
+            }
+        }
+
+        .product-image-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        @media (min-width: 1024px) {
+            .product-image-wrapper {
+                justify-content: flex-end;
+            }
+        }
+
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 28rem;
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .discount-badge {
+            position: absolute;
+            right: -1rem;
+            top: 33.333%;
+            transform: translateX(-25%);
+            width: 6rem;
+            height: 6rem;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF5722 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+            border: 4px solid white;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 640px) {
+            .discount-badge {
+                right: -0.5rem;
+                transform: translateX(0);
+                width: 7rem;
+                height: 7rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .discount-badge {
+                right: 0;
+                width: 8rem;
+                height: 8rem;
+            }
+        }
+
+        .badge-text-small {
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .badge-text-small {
+                font-size: 0.875rem;
+            }
+        }
+
+        .badge-percentage {
+            color: white;
+            font-size: 1.875rem;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .badge-percentage {
+                font-size: 2.25rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .badge-percentage {
+                font-size: 3rem;
+            }
+        }
+
+        .badge-text-large {
+            color: white;
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .badge-text-large {
+                font-size: 0.75rem;
+            }
+        }
+
+        .offer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .offer-section {
+                gap: 2.5rem;
+            }
+        }
+
+        .banner {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF5722 100%);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .banner {
+                padding: 2rem;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .banner {
+                padding: 2rem;
+                gap: 2rem;
+            }
+        }
+
+        .banner h2 {
+            font-size: 1.25rem;
+            font-weight: 900;
+            line-height: 1.4;
+        }
+
+        @media (min-width: 640px) {
+            .banner h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .timer {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            font-feature-settings: "tnum" 1;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 640px) {
+            .timer {
+                font-size: 3rem;
+            }
+        }
+
+        .timer-unit {
+            font-size: 0.5rem;
+            display: block;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.875rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            h3 {
+                font-size: 2.25rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            h3 {
+                font-size: 3rem;
+            }
+        }
+
+        .price-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .main-price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .price {
+            font-size: 2.25rem;
+            font-weight: 900;
+            color: #1fad89;
+        }
+
+        @media (min-width: 640px) {
+            .price {
+                font-size: 3rem;
+            }
+        }
+
+        .price-per-pack {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #4b5563;
+        }
+
+        .old-price-section {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .old-price {
+            font-size: 1.25rem;
+            text-decoration: line-through;
+            color: #9ca3af;
+            font-weight: 700;
+        }
+
+        .total-price {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .pack-info {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .pack-label {
+            color: #FF6B35;
+            font-weight: 900;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .pack-description {
+            color: #4b5563;
+            font-size: 1rem;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        @media (min-width: 640px) {
+            .pack-description {
+                font-size: 1.0625rem;
+            }
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(to right, #1fad89, #16a876);
+            color: white;
+            font-weight: 900;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-size: 1.125rem;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (min-width: 640px) {
+            .cta-button {
+                font-size: 1.25rem;
+                padding: 1rem 2rem;
+            }
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(to right, #169f7f, #128f6c);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .verification {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            color: #4b5563;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        @media (min-width: 640px) {
+            .verification {
+                font-size: 1rem;
+            }
+        }
+
+        .verification-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            background-color: #1fad89;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <!-- Headline -->
+            <h1>Votre formule personnalisée,<br>rien que pour vous</h1>
+
+            <!-- Content Grid -->
+            <div class="grid">
+                <!-- Product Image -->
+                <div class="product-image-wrapper">
+                    <div class="product-image-container">
+                        <img src="https://imagedelivery.net/u8JiH5bJQTfO_tBFRSJ5Lg/2ea4402a-5abf-4042-8be0-627480631f00/w=480,h=502,format=webp" alt="Nourix - Produit premium" class="product-image">
+                        
+                        <!-- Discount Badge -->
+                        <div class="discount-badge">
+                            <span class="badge-text-small">obtenir</span>
+                            <span class="badge-percentage">47%</span>
+                            <span class="badge-text-large">Réduction</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Offer Section -->
+                <div class="offer-section">
+                    <!-- Orange Banner Timer -->
+                    <div class="banner">
+                        <h2>Vite ! Offre<br>exclusive à<br>durée limitée.</h2>
+                        <div class="timer">
+                            <span id="timer-display">14:51</span>
+                            <span class="timer-unit" id="timer-labels">Minutes Secondes</span>
+                        </div>
+                    </div>
+
+                    <!-- Exceptional Offer -->
+                    <div>
+                        <h3>Offre exceptionnelle</h3>
+
+                        <!-- Price -->
+                        <div class="price-section">
+                            <div class="main-price">
+                                <span class="price">36,65 €</span>
+                                <span class="price-per-pack">Prix par pack</span>
+                            </div>
+                            <div class="old-price-section">
+                                <span class="old-price">69,95 €</span>
+                                <span class="total-price">Prix total 109,95 €</span>
+                            </div>
+                        </div>
+
+                        <!-- Pack Info -->
+                        <div class="pack-info">
+                            <span class="pack-label">Pack de 3 flacons</span>
+                            <p class="pack-description">Parfait pour ancrer de bonnes habitudes et transformer votre quotidien.</p>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <a href="https://www.clickrtrckr.com/7C7NFN3/418CXDJ/?creative_id=3532" class="cta-button">Obtenez Nourix maintenant</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verification Badge -->
+            <div class="verification">
+                <div class="verification-icon">✓</div>
+                <span>Approuvé par les plus grands experts en nutrition à travers le monde.</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function updateTimer() {
+            const timerDisplay = document.getElementById('timer-display');
+            const timerLabels = document.getElementById('timer-labels');
+            
+            // Inicia com 14 minutos e 51 segundos
+            let timeLeft = 14 * 60 + 51;
+
+            function updateDisplay() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                
+                const minutesStr = String(minutes).padStart(2, '0');
+                const secondsStr = String(seconds).padStart(2, '0');
+                
+                timerDisplay.innerHTML = `${minutesStr}<span class="timer-unit" style="display: inline;">:</span>${secondsStr}`;
+                timerLabels.textContent = 'MINUTES SECONDES';
+                
+                timeLeft--;
+                
+                if (timeLeft < 0) {
+                    timeLeft = 14 * 60 + 51; // Reinicia o timer
+                }
+            }
+
+            updateDisplay();
+            setInterval(updateDisplay, 1000);
+        }
+
+        // Inicia o timer quando a página carrega
+        window.addEventListener('load', updateTimer);
+    </script>
+</body>
+</html>
